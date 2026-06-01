@@ -107,7 +107,18 @@ nav_order: 4
     color: #555;
   }
 
+  /* Fix: prevent sidebar from growing on wide screens; let checklist use full width */
+  .main {
+    max-width: none !important;
+  }
+  @media (min-width: 66.5rem) {
+    .side-bar + .main {
+      margin-left: 16.5rem !important;
+    }
+  }
+
   @media print {
+    @page { size: A4 landscape; }
     .side-bar,
     .main-header,
     .aux-nav,
@@ -118,13 +129,17 @@ nav_order: 4
     }
     .main {
       margin-left: 0 !important;
+      max-width: none !important;
     }
     .main-content-wrap {
-      margin-left: 0 !important;
       max-width: 100% !important;
+      padding: 0.5cm !important;
     }
     .main-content {
       padding: 0 !important;
+    }
+    .checklist-wrapper {
+      overflow-x: visible;
     }
     body { font-size: 10pt; }
     .checklist-table { font-size: 9pt; }
