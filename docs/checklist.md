@@ -107,44 +107,102 @@ nav_order: 4
     color: #555;
   }
 
-  /* Fix: prevent sidebar from growing on wide screens; let checklist use full width */
-  .main {
-    max-width: none !important;
+  /* ── SCREEN ONLY ─────────────────────────────────────────────────────────
+     Using "screen and" ensures these rules never bleed into print/PDF.      */
+
+  /* Remove the 800px content cap */
+  @media screen and (min-width: 50rem) {
+    .main {
+      max-width: none !important;
+    }
   }
-  @media (min-width: 66.5rem) {
+
+  /* At ≥1064px just-the-docs grows the sidebar to centre content at 800px.
+     Pin it back to its base width so the table fills all remaining space. */
+  @media screen and (min-width: 66.5rem) {
+    .side-bar {
+      width: 16.5rem !important;
+      min-width: 16.5rem !important;
+    }
     .side-bar + .main {
       margin-left: 16.5rem !important;
     }
   }
 
+  /* ── PRINT / EXPORT PDF ───────────────────────────────────────────────── */
   @media print {
-    @page { size: A4 landscape; }
+    @page {
+      margin: 1.2cm;
+      size: landscape;
+    }
+
+    /* Hide all navigation chrome */
     .side-bar,
     .main-header,
     .aux-nav,
     .page-nav-buttons,
     .no-print,
-    footer {
+    footer,
+    .site-footer {
       display: none !important;
     }
-    .main {
-      margin-left: 0 !important;
-      max-width: none !important;
-    }
-    .main-content-wrap {
-      max-width: 100% !important;
-      padding: 0.5cm !important;
-    }
-    .main-content {
+
+    /* Full-width layout — no sidebar margin, no max-width cap */
+    html, body {
+      width: 100% !important;
+      margin: 0 !important;
       padding: 0 !important;
     }
-    .checklist-wrapper {
-      overflow-x: visible;
+
+    .main,
+    .side-bar + .main {
+      margin: 0 !important;
+      padding: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      position: static !important;
     }
-    body { font-size: 10pt; }
-    .checklist-table { font-size: 9pt; }
+
+    .main-content-wrap,
+    .main-content {
+      margin: 0 !important;
+      padding: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+
+    /* Checklist table: fill the page, all 6 columns visible */
+    .checklist-wrapper {
+      width: 100% !important;
+      overflow: visible !important;
+    }
+
+    .checklist-table {
+      font-size: 8.5pt;
+      width: 100% !important;
+      table-layout: fixed !important;
+    }
+
+    /* Explicit column widths so No and NA are never pushed off-page */
+    .checklist-table th:nth-child(1) { width: 11% !important; }
+    .checklist-table th:nth-child(2) { width:  4% !important; }
+    .checklist-table th:nth-child(3) { width: 51% !important; }
+    .checklist-table th:nth-child(4) { width: 14% !important; }
+    .checklist-table th:nth-child(5) { width: 10% !important; }
+    .checklist-table th:nth-child(6) { width: 10% !important; }
+
+    /* Allow item text to wrap freely within its column */
+    .checklist-table td.item-text   { min-width: 0 !important; word-wrap: break-word; }
+    .checklist-table td.subsection-label { white-space: normal !important; }
+
     .checklist-table td.item-text a { color: black; }
-    .page-input { border: 1px solid black; background: white; }
+    .page-input { border: 1px solid #000; background: white; }
+
+    /* Avoid splitting a row across pages */
+    .checklist-table tr {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
   }
 </style>
 
