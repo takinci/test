@@ -1,0 +1,38 @@
+title: CLAIM Elaboration
+description: "Checklist for Artificial Intelligence in Medical Imaging (CLAIM): Explanation, Elaboration and Examples"
+theme: just-the-docs
+url: ""
+baseurl: ""
+
+logo: "/assets/CLAIM-logo.jpg"
+
+aux_links:
+  "View on GitHub": "https://github.com/RSNA/CLAIM"
+  "CLAIM Guideline": "https://pubs.rsna.org/page/ai/claim"
+
+aux_links_new_tab: true
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
+search_enabled: true
+heading_anchors: true
+color_scheme: light
+
+
+footer_content: "CLAIM: Checklist for Artificial Intelligence in Medical Imaging. Content provided under MIT placeholder license."
+
+callouts:
+  note:
+    title: Note
+    color: blue
+  warning:
+    title: Warning
+    color: yellow
+  highlight:
+    title: Highlight
+    color: purple

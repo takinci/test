@@ -1,178 +1,72 @@
-<div align="center">
+<p align="center">
+  <img src="CLAIM+logo+solid+blue.jpg" alt="CLAIM Logo" width="480" />
+</p>
 
-<img src="./Logo only.png" alt="EcoRad logo" width="120"/>
+# CLAIM: Checklist for Artificial Intelligence in Medical Imaging — Explanation, Elaboration and Examples
 
-# EcoRad
+This repository hosts the companion website for the **CLAIM 2024 Update** reporting guideline. The site provides a detailed explanation and elaboration of each of the 44 CLAIM checklist items, supplemented by illustrative examples from the literature demonstrating appropriate adherence to each item.
 
-### Radiology Sustainability Intelligence
+The objective is to support researchers and reviewers in the accurate and effective application of the CLAIM guideline by clarifying the intent and proper implementation of each item, reducing common misinterpretations, and encouraging effective use of the checklist.
 
-**Measure the environmental footprint of a clinical imaging department — energy, carbon, water, AI, and more — directly in your browser.**
+## Website
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-takinci.github.io%2FEcoRad-2E7D32?style=for-the-badge&logo=github)](https://takinci.github.io/EcoRad/)
-[![Built with React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://react.dev)
-[![Chart.js](https://img.shields.io/badge/Chart.js-4-FF6384?style=flat-square&logo=chartdotjs)](https://www.chartjs.org)
-[![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-222?style=flat-square&logo=github)](https://takinci.github.io/EcoRad/)
+The site includes:
 
-</div>
+- **CLAIM 2024 Checklist** — Interactive checklist table matching the official format, with fillable page/line fields, No and NA checkboxes, and a Print / Export PDF button. Each item links to its elaboration page.
+- **CLAIM 2024 Items** — All 44 items grouped by section (Title/Abstract, Introduction, Methods, Results, Discussion, Other Information). Each item page contains the item definition, explanation and elaboration, and illustrative examples from the literature.
+- **References** — Full reference list for all cited works.
 
----
+## Reference
 
-## What is EcoRad?
+Tejani AS, Klontzas ME, Gatti AA, et al. Checklist for Artificial Intelligence in Medical Imaging (CLAIM): 2024 Update. *Radiol Artif Intell* 2024;6(4):e240300. [https://doi.org/10.1148/ryai.240300](https://doi.org/10.1148/ryai.240300)
 
-EcoRad is a browser-based sustainability dashboard for clinical radiology departments. It quantifies the environmental impact of imaging operations, compares interventions, models AI tool footprints, and generates shareable reports — all from published literature defaults that you can override with your own measured data.
+## Links
 
-No installation. No backend. No data leaves your browser.
+- [CLAIM Guideline site](https://pubs.rsna.org/page/ai/claim)
+- [Journal article](https://pubs.rsna.org/doi/10.1148/ryai.240300)
 
-**→ Try it live: [takinci.github.io/EcoRad](https://takinci.github.io/EcoRad/)**
+## Repository structure
 
----
-
-## What can it do?
-
-### 🔋 Radiology Sustainability Dashboard
-
-Five metric categories, fully reactive to your region, department profile, and time period:
-
-| Category | What it tracks |
-|---|---|
-| **1. Energy consumption** | Total kWh/MWh, active vs idle breakdown, avoidable idle, energy per scan |
-| **2. Carbon emissions** | GHG Protocol Scope 1 (direct), Scope 2 (electricity), Scope 3 (hardware embodied + patient travel) with stacked bar chart |
-| **3. Infrastructure** | Top idle waster, hardware lifespans, carbon intensity, Scope 3 total, top-5 opportunity table |
-| **4. Resource footprint** | Water (L/kWh cooling), paper consumption (g/encounter), hazardous waste (contrast media) |
-| **5. Real-world equivalencies** | Car km, phone charges, tree-years to offset, short-haul flights (ICAO 2023), household electricity years |
-
-### 🤖 AI Sustainability Dashboard
-
-Three-phase lifecycle model for a radiology AI tool:
-
-| Phase | Metrics |
-|---|---|
-| **Training** | Total kWh (one-time), CO₂e, estimated GPU hours, amortised per month |
-| **Testing / validation** | Hold-out set energy, CO₂e, proxy metric note (DLP/CTDIvol R²=0.87–0.92) |
-| **Inference & deployment** | Per-study energy, monthly and lifetime totals, water footprint |
-
-Plus: Green AI efficiency ratio (accuracy % per kWh), PUE, embodied GPU carbon, rebound effect risk, and a full modality energy benchmark table (Vosshenrich et al.).
-
-Selectable **architecture** (CNN, U-Net, EfficientNet, ViT, Diffusion/Generative), **model size**, **precision** (float32 / float16 AMP), and **cloud provider**.
-
-### 📊 Scenario Comparison
-
-Pick from 12 evidence-based interventions and see the before/after energy and carbon impact:
-
-> Turn MRI/CT off overnight · Standby mode · Reduce low-value imaging · Shorten protocols · Renewable electricity · Move computation to lower-carbon region · Use smaller AI models · Consolidate servers · and more
-
-### 📤 Export
-
-Download a CSV report or print to PDF with a clean print-optimised layout. The export page includes key assumption citations so reports are audit-ready.
-
----
-
-## Department Profiles
-
-Switch profile to load a different equipment fleet — all numbers update instantly:
-
-| Profile | Fleet |
-|---|---|
-| **Hospital radiology** | MRI 3T + CT + X-ray + Ultrasound + PACS + Workstations |
-| **Outpatient imaging center** | MRI 1.5T + smaller CT + X-ray + 3× Ultrasound |
-| **Research imaging lab** | MRI 7T + MRI 3T + CT + Ultrasound + Analysis Workstations ×8 |
-| **Teleradiology / informatics** | Remote PACS + Archive + AI Inference Servers + Workstations ×12 |
-
----
-
-## Configurable inputs
-
-All settings are reflected in the URL hash — copy the link to share your exact configuration:
-
-- **Region / grid** — Switzerland, France, Germany, United States, United Kingdom, EU average, Global average, Custom
-- **Time period** — Monthly, Quarterly, Annual
-- **Department profile** — 4 presets (see above)
-- **Metric type** — Energy, Carbon, Water, AI net impact
-- **Intended use** — footprint estimate, modality comparison, KPI tracking, AI impact, intervention evaluation
-
----
-
-## Scientific basis
-
-Every default value is sourced from peer-reviewed literature. Key references:
-
-| Area | Source |
-|---|---|
-| MRI active power (30 kW, 3T) | Heye et al. *J Magn Reson Imaging* 2023 · DOI [10.1002/jmri.28994](https://doi.org/10.1002/jmri.28994) |
-| CT active power (40–80 kW) | Acra 2024 · DOI [10.1016/j.acra.2024.05.004](https://doi.org/10.1016/j.acra.2024.05.004) |
-| Carbon intensity by region | Our World in Data 2022–2023 · [ourworldindata.org](https://ourworldindata.org/grapher/carbon-intensity-electricity) |
-| AI footprint methodology | Doo et al. *Radiology* 2024 · DOI [10.1148/radiol.232030](https://doi.org/10.1148/radiol.232030) |
-| Intervention savings | McKee et al. *Radiology* 2024 · DOI [10.1148/radiol.240219](https://doi.org/10.1148/radiol.240219) |
-| Modality energy benchmarks | Vosshenrich et al. (Implementation Guide) |
-| Idle state efficiency | Schoen et al. — idle offers 14.9× more savings than active state |
-| ESR guidance | ESR Green Imaging self-assessment · ESR Position Paper 2025 |
-
-Full reference list: [sources.md](./sources.md)
-
-> **All values are literature-derived defaults.** Replace them with your own scanner logs, utility bills, or measured data for publication-quality reporting.
-
----
-
-## Run locally
-
-```bash
-git clone https://github.com/takinci/EcoRad.git
-cd EcoRad/frontend
-npm install
-npm run dev
+```text
+.
+├── docs/                  # Jekyll documentation site (GitHub Pages source)
+│   ├── _config.yml        # Site configuration
+│   ├── _plugins/          # Ruby compatibility plugin
+│   ├── _sass/custom/      # Custom CSS overrides
+│   ├── _includes/         # Custom Jekyll includes (prev/next navigation)
+│   ├── assets/            # Logo and figures
+│   ├── index.md           # Home page
+│   ├── checklist.md       # Interactive CLAIM 2024 Checklist
+│   ├── claim-items.md     # Items overview (grouped by section)
+│   ├── item-01.md … item-44.md  # Individual item pages
+│   └── references.md      # References
+├── .github/workflows/     # GitHub Pages deployment workflow
+├── start.sh               # One-command local server + tunnel script
+├── CITATION.cff           # Citation metadata
+├── CONTRIBUTING.md        # Contribution guidance
+└── LICENSE
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+## Local preview
 
-To build for deployment:
+Requires Ruby 3.3 (install via Homebrew: `brew install ruby@3.3`).
 
 ```bash
-npm run build   # outputs to ../docs/
+cd docs
+PATH="/usr/local/opt/ruby@3.3/bin:$PATH" GEM_HOME="$HOME/.gem/ruby/3.3.0" bundle install
+PATH="/usr/local/opt/ruby@3.3/bin:$PATH" GEM_HOME="$HOME/.gem/ruby/3.3.0" bundle exec jekyll serve
 ```
 
----
+The site will be available at `http://localhost:4000`.
 
-## Tech stack
+Alternatively, use `./start.sh` from the repository root to start Jekyll and a Cloudflare tunnel in one command.
 
-| Layer | Technology |
-|---|---|
-| UI framework | React 18 |
-| Build tool | Vite 5 |
-| Charts | Chart.js 4 + react-chartjs-2 |
-| Icons | Lucide React |
-| Hosting | GitHub Pages (static, no backend) |
-| CI/CD | GitHub Actions |
+## Deploy to GitHub Pages
 
----
+1. Push this repository to GitHub.
+2. Go to **Settings > Pages** and set the source to **GitHub Actions**.
+3. The workflow at `.github/workflows/deploy.yml` will build and deploy the site automatically on every push to `main`.
 
-## Who is it for?
+## License
 
-- **Radiologists and clinical leads** — understand the footprint of your department and identify quick wins
-- **Sustainability officers** — generate Scope 1/2/3 estimates and intervention comparisons for ESG reporting
-- **Medical physicists** — benchmark scanner energy against published literature
-- **AI governance teams** — model the lifecycle carbon footprint of a radiology AI tool before deployment
-- **Academic researchers** — explore and cite the evidence base, export data for publications
-- **Healthcare executives** — communicate sustainability performance in accessible equivalencies (car km, flights, tree-years)
-
----
-
-## Assumptions and governance
-
-1. Prefer measured data — scanner logs, smart meters, utility bills always override defaults
-2. Literature values are transparent defaults, not authoritative truth
-3. Mark every input as *measured*, *estimated*, or *assumed*
-4. Carbon intensity must be editable and region-specific
-5. Separate AI gross footprint from estimated sustainability benefits
-6. Report Scope 1, 2, and 3 separately
-
-See [sources.md](./sources.md) for the full assumptions governance document.
-
----
-
-<div align="center">
-
-Built for radiology sustainability research · Evidence-based · Open source
-
-[**→ Open EcoRad**](https://takinci.github.io/EcoRad/)
-
-</div>
+MIT placeholder license. Confirm final publication, copyright, and third-party reuse permissions before public release.
