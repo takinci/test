@@ -1,8 +1,8 @@
 title: CLAIM Elaboration
 description: "Checklist for Artificial Intelligence in Medical Imaging (CLAIM): Explanation, Elaboration and Examples"
 theme: just-the-docs
-url: "https://takinci.github.io"
-baseurl: "/test"
+url: ""
+baseurl: ""
 
 logo: "/assets/CLAIM-logo.jpg"
 
